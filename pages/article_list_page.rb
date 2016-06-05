@@ -40,7 +40,7 @@ class ArticleListPage < Howitzer::Web::Page
 
   def open_article(text)
     log.info "Open '#{text}' article"
-    if phantomjs_driver?
+    if tablet_screen?
       article_link_element.click
     else
       article_button_element(text).click

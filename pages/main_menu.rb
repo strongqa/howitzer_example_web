@@ -9,18 +9,34 @@ module MainMenu
       element :first_link, ->(text){ text }, match: :first
 
       def self.authenticated?
-        menu_small_element.click if phantomjs_driver?
-        menu_element
-        has_menu_item_element?('Logout')
-      rescue Capybara::ElementNotFound
-        menu_item_elements('Logout').first.nil?
+        self.instance.authenticated?
+      end
+
+      def self.not_authenticated?
+        self.instance.not_authenticated?
       end
     end
   end
 
+  def tablet_screen?
+    !menu_small_elements.first.nil?
+  end
+
+  def authenticated?
+    menu_small_element.click if tablet_screen?
+    menu_element
+    has_menu_item_element?('Logout')
+  end
+
+  def not_authenticated?
+    menu_small_element.click if tablet_screen?
+    menu_element
+    has_no_menu_item_element?('Logout')
+  end
+
   def choose_menu(text)
     log.info "Open '#{text}' menu"
-    if phantomjs_driver?
+    if tablet_screen?
       menu_small_element.click
       first_link(text).click
     else

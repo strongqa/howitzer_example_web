@@ -27,7 +27,7 @@ class EditAccountPage < Howitzer::Web::Page
     email_element.set(email) unless email.nil?
     password_element.set(password) unless password.nil?
     password_confirmation_element.set(password_confirmation) unless password_confirmation.nil?
-    current_password.set(current_password) unless current_password.nil?
+    current_password_element.set(current_password) unless current_password.nil?
     self
   end
 

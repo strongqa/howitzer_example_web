@@ -19,7 +19,7 @@ class ArticlePage < Howitzer::Web::Page
 
   def fill_comment_form(body: nil)
     log.info "Fill in Add Comment form with body: #{body}"
-    comment_field.set(body) unless body.nil?
+    comment_field_element.set(body) unless body.nil?
   end
 
   def submit_form

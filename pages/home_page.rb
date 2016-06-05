@@ -5,8 +5,8 @@ class HomePage < Howitzer::Web::Page
   validate :title, /\ADemo web application - Home\z/
   validate :url, /\A(?:.*?:\/\/)?[^\/]*\/?\z/
 
-  element :article_link, :xpath, ->(title) { ".//a[.='#{title}']"} }
-  element :panel_heading, :xpath, ->(title) { "//h3[text()=\"#{title}\"]/parent::*/following-sibling::*"} }
+  element :article_link, :xpath, ->(title) { ".//a[.='#{title}']" }
+  element :panel_heading, :xpath, ->(title) { "//h3[text()=\"#{title}\"]/parent::*/following-sibling::*" }
 
   include MainMenu
 
