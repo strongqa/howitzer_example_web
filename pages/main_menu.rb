@@ -6,7 +6,7 @@ module MainMenu
       element :menu_small, '.navbar-toggle'
       element :error_message, '#error_explanation'
       element :flash_message, '#flash_notice'
-      element :first_link, ->(text){ text }, match: :first
+      element :first_link, :link, ->(text){ text }, match: :first
 
       def self.authenticated?
         self.instance.authenticated?
