@@ -38,7 +38,7 @@ module MainMenu
     log.info "Open '#{text}' menu"
     if tablet_screen?
       menu_small_element.click
-      first_link(text).click
+      first_link_element(text).click
     else
       menu_item_element(text).click
     end
