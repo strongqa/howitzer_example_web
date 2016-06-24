@@ -55,18 +55,18 @@ module MainMenu
   private
 
   def accept_js_confirmation
-    page.execute_script 'window.confirm = function(){return true;}'
+    execute_script 'window.confirm = function(){return true;}'
     yield
     window_confirm
   end
 
   def dismiss_js_confirmation
-    page.execute_script 'window.confirm = function(){return false;}'
+    execute_script 'window.confirm = function(){return false;}'
     yield
     window_confirm
   end
 
   def window_confirm
-    page.execute_script 'return window.confirm'
+    execute_script 'return window.confirm'
   end
 end

@@ -24,7 +24,7 @@ class LoginPage < Howitzer::Web::Page
 
   def submit_form
     log.info "Submit Login Form"
-    page.execute_script("$('[name=\"commit\"]').trigger('click')")
+    execute_script("$('[name=\"commit\"]').trigger('click')")
     sleep settings.timeout_tiny
   end
 
