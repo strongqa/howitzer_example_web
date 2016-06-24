@@ -1,8 +1,8 @@
 require_relative 'main_menu'
 
 class ChangePasswordPage < Howitzer::Web::Page
-  url '/users/password/new'
-  validate :url, /\/users\/password/
+  url '/users/password/edit?reset_password_token={token}'
+  validate :url, /\/users\/password(?:\z|\/edit)/
 
   element :password_input, :fillable_field, 'user_password'
   element :confirm_password_input, :fillable_field, 'user_password_confirmation'
