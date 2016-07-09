@@ -1,10 +1,7 @@
-require_relative 'main_menu'
-
-class ArticleListPage < Howitzer::Web::Page
+require_relative 'demo_app_page'
+class ArticleListPage < DemoAppPage
   url '/articles/'
   validate :title, /\ADemo web application - Listing Articles\z/
-
-  include MainMenu
 
   element :new_article_button, :xpath, "//a[@href='/articles/new']"
   element :article_button, :xpath, ->(title) { "//a[contains(.,'#{title}')]" }
@@ -40,7 +37,7 @@ class ArticleListPage < Howitzer::Web::Page
 
   def open_article(text)
     log.info "Open '#{text}' article"
-    if tablet_screen?
+    if main_menu_section.tablet_screen?
       article_link_element(text).click
     else
       article_button_element(text).click

@@ -1,4 +1,5 @@
-class ForgotPasswordPage < Howitzer::Web::Page
+require_relative 'demo_app_page'
+class ForgotPasswordPage < DemoAppPage
   url '/users/password/new'
   validate :url, /\/users\/password/
 

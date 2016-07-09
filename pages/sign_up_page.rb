@@ -1,6 +1,5 @@
-require_relative 'main_menu'
-
-class SignUpPage < Howitzer::Web::Page
+require_relative 'demo_app_page'
+class SignUpPage < DemoAppPage
   url '/users/sign_up'
   validate :title, /\ADemo web application - Sign Up\z/
 
@@ -9,8 +8,6 @@ class SignUpPage < Howitzer::Web::Page
   element :password_input, :fillable_field, 'user_password'
   element :password_confirmation_input, :fillable_field, 'user_password_confirmation'
   element :sign_up_btn, :button, 'Sign up'
-
-  include MainMenu
 
   def fill_form(user_name:nil, email:nil, password:nil, password_confirmation:nil)
     user_name_input_element.set(user_name) unless user_name.nil?

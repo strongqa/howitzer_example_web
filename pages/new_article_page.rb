@@ -1,4 +1,5 @@
-class NewArticlePage < Howitzer::Web::Page
+require_relative 'demo_app_page'
+class NewArticlePage < DemoAppPage
   url '/articles/new/'
   validate :title, /\ADemo web application - New Article\z/
 

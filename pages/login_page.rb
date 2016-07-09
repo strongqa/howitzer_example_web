@@ -1,6 +1,5 @@
-require_relative 'main_menu'
-
-class LoginPage < Howitzer::Web::Page
+require_relative 'demo_app_page'
+class LoginPage < DemoAppPage
   url '/users/sign_in'
   validate :title, /\ADemo web application - Log In\z/
   validate :url, /\/sign_in\/?\z/
@@ -11,8 +10,6 @@ class LoginPage < Howitzer::Web::Page
 
   element :sign_up_link, :link, 'new_user_sign_up'
   element :forgot_password_link, :link, 'Forgot password?'
-
-  include MainMenu
 
   def fill_form(email: nil, password: nil, remember_me: nil)
     log.info "Fill in Login Form with data: email: #{email}, password: #{password}, remember_me: #{remember_me}"

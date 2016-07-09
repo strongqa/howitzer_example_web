@@ -1,6 +1,5 @@
-require_relative 'main_menu'
-
-class ArticlePage < Howitzer::Web::Page
+require_relative 'demo_app_page'
+class ArticlePage < DemoAppPage
   url '/articles{/id}'
   validate :title, /\ADemo web application - Article\z/
   validate :url, /\/articles\/\d+\/?\z/
@@ -14,8 +13,6 @@ class ArticlePage < Howitzer::Web::Page
   element :comment_form, "#new_comment"
   element :back_to_articles, :xpath, ".//a[contains(.,'Back to Articles')]"
   element :edit_article_button, :xpath, ".//a[contains(.,'Edit Article')]"
-
-  include MainMenu
 
   def fill_comment_form(body: nil)
     log.info "Fill in Add Comment form with body: #{body}"

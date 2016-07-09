@@ -1,6 +1,5 @@
-require_relative 'main_menu'
-
-class EditAccountPage < Howitzer::Web::Page
+require_relative 'demo_app_page'
+class EditAccountPage < DemoAppPage
   url '/users/edit'
   validate :title, /Demo web application - Edit User\z/
 
@@ -11,8 +10,6 @@ class EditAccountPage < Howitzer::Web::Page
   element :password, :fillable_field, 'user_password'
   element :password_confirmation, :fillable_field, 'user_password_confirmation'
   element :current_password, :fillable_field, 'user_current_password'
-
-  include MainMenu
 
   def cancel_my_account
     log.info "Cancelling user account"

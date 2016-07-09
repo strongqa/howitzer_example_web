@@ -1,13 +1,10 @@
-require_relative 'main_menu'
-
-class EditArticlePage < Howitzer::Web::Page
+require_relative 'demo_app_page'
+class EditArticlePage < DemoAppPage
   validate :title, /\ADemo web application - Edit Article\z/
 
   element :article_title_field, :fillable_field, 'article[title]'
   element :article_text_field, :fillable_field, 'article[text]'
   element :create_article_button, :button, 'Update Article'
-
-  include MainMenu
 
   def fill_form(title:nil, text:nil)
     log.info "Fill in Update Article form with title: #{title} , and body #{text}"
