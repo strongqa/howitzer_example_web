@@ -19,9 +19,9 @@ class EditAccountPage < DemoAppPage
   end
 
   def fill_form(user_name: '', email: '', password: '', password_confirmation: '', current_password: '')
-    log.info "Fill in Edit Account form with data: user_name: #{user_name}" \
-             ", email: #{email}, password_confirmation: #{password_confirmation}" \
-             ", current_password: #{current_password}"
+    log.info "Fill in Edit Account form with data:\n\tuser_name: #{user_name}\n" \
+             "\temail: #{email}\n\tpassword: #{password}\n\tpassword_confirmation: #{password_confirmation}\n" \
+             "\tcurrent_password: #{current_password}"
     name_element.set(user_name)
     email_element.set(email)
     password_element.set(password)
