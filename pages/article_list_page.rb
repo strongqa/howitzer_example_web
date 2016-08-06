@@ -5,8 +5,10 @@ class ArticleListPage < DemoAppPage
 
   element :new_article_button, :xpath, "//a[@href='/articles/new']"
   element :article_button, :xpath, ->(title) { "//a[contains(.,'#{title}')]" }
-  element :destroy_button, :xpath, ->(title) { "//strong[.='#{title}']/following-sibling::a[normalize-space(.)='Destroy'][1]" }
-  element :edit_button, :xpath, ->(title) { "//strong[.='#{title}']/following-sibling::a[normalize-space(.)='Edit'][1]" }
+  element :destroy_button, :xpath,
+          ->(title) { "//strong[.='#{title}']/following-sibling::a[normalize-space(.)='Destroy'][1]" }
+  element :edit_button, :xpath,
+          ->(title) { "//strong[.='#{title}']/following-sibling::a[normalize-space(.)='Edit'][1]" }
   element :article_link, :link, ->(text) { text }, match: :first
 
   def add_new_article
@@ -25,13 +27,9 @@ class ArticleListPage < DemoAppPage
     log.info "Destroy article: '#{title}' with confirmation: '#{confirmation}'"
     destroy = -> { destroy_button_element(title).click }
     if confirmation
-      accept_js_confirmation do
-        destroy.call
-      end
+      accept_js_confirmation { destroy.call }
     else
-      dismiss_js_confirmation do
-        destroy.call
-      end
+      dismiss_js_confirmation { destroy.call }
     end
   end
 

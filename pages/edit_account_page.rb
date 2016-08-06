@@ -18,13 +18,15 @@ class EditAccountPage < DemoAppPage
     end
   end
 
-  def fill_form(user_name: nil, email: nil, password: nil, password_confirmation: nil, current_password: nil)
-    log.info "Fill in Edit Account form with data: user_name: #{user_name}, email: #{email}, password_confirmation: #{password_confirmation}, current_password: #{current_password}"
-    name_element.set(user_name) unless user_name.nil?
-    email_element.set(email) unless email.nil?
-    password_element.set(password) unless password.nil?
-    password_confirmation_element.set(password_confirmation) unless password_confirmation.nil?
-    current_password_element.set(current_password) unless current_password.nil?
+  def fill_form(user_name: '', email: '', password: '', password_confirmation: '', current_password: '')
+    log.info "Fill in Edit Account form with data: user_name: #{user_name}" /
+             ", email: #{email}, password_confirmation: #{password_confirmation}" /
+             ", current_password: #{current_password}"
+    name_element.set(user_name)
+    email_element.set(email)
+    password_element.set(password)
+    password_confirmation_element.set(password_confirmation)
+    current_password_element.set(current_password)
     self
   end
 

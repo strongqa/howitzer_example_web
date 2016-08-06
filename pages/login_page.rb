@@ -2,7 +2,7 @@ require_relative 'demo_app_page'
 class LoginPage < DemoAppPage
   url '/users/sign_in'
   validate :title, /\ADemo web application - Log In\z/
-  validate :url, /\/sign_in\/?\z/
+  validate :url, %r{\/sign_in\/?\z}
 
   element :email_input, :fillable_field, 'user_email'
   element :password_input, :fillable_field, 'user_password'
