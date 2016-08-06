@@ -9,8 +9,8 @@ class ArticlePage < DemoAppPage
   element :commenter_name, :xpath, ".//p[contains(.,'Commenter:')]"
   element :comment_text, :xpath, ".//p[contains(.,'Comment:')]"
   element :destroy_comment, :xpath, ->(comment) { ".//p[contains(.,'#{comment}')]/following-sibling::p/a[.='Destroy Comment']" }
-  element :article_button, :xpath, ->(title){ "//a[contains(.,'#{title}')]" }
-  element :comment_form, "#new_comment"
+  element :article_button, :xpath, ->(title) { "//a[contains(.,'#{title}')]" }
+  element :comment_form, '#new_comment'
   element :back_to_articles, :xpath, ".//a[contains(.,'Back to Articles')]"
   element :edit_article_button, :xpath, ".//a[contains(.,'Edit Article')]"
 
@@ -20,14 +20,14 @@ class ArticlePage < DemoAppPage
   end
 
   def submit_form
-    log.info "Submit Add Comment form"
+    log.info 'Submit Add Comment form'
     add_comment_button_element.click
   end
 
   def comment_data
     {
-        commenter: commenter_name_element.text.gsub(/Commenter: /, ''),
-        comment: comment_text_element.text.gsub(/Comment: /, '')
+      commenter: commenter_name_element.text.gsub(/Commenter: /, ''),
+      comment: comment_text_element.text.gsub(/Comment: /, '')
     }
   end
 
@@ -36,7 +36,7 @@ class ArticlePage < DemoAppPage
     article_button_element(text).click
   end
 
-  def destroy_comment(comment_text,confirmation = true)
+  def destroy_comment(comment_text, confirmation = true)
     log.info "Destroy comment  '#{comment_text}' on article page with confirmation: '#{confirmation}'"
     destroy = -> { destroy_comment_element(comment_text).click }
     if confirmation
@@ -53,5 +53,4 @@ class ArticlePage < DemoAppPage
   def back_to_article_list
     back_to_articles_element.click
   end
-
 end

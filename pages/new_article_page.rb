@@ -7,7 +7,7 @@ class NewArticlePage < DemoAppPage
   element :article_text_field, :fillable_field, 'article[text]'
   element :create_article_button, :button, 'Create Article'
 
-  def fill_form(title:nil, text:nil)
+  def fill_form(title: nil, text: nil)
     log.info "Fill in Create article form with title: #{title} , and body #{text}"
     article_title_field_element.set(title) unless title.nil?
     article_text_field_element.set(text) unless text.nil?
@@ -15,9 +15,8 @@ class NewArticlePage < DemoAppPage
   end
 
   def submit_form
-    log.info "Submit Create article form"
+    log.info 'Submit Create article form'
     create_article_button_element.click
     self
   end
-
 end

@@ -1,10 +1,10 @@
 class MainMenuSection < Howitzer::Web::Section
   me '.navbar-fixed-top'
 
-  element :menu_item, :xpath, ->(name){ ".//a[.='#{name}']" }
+  element :menu_item, :xpath, ->(name) { ".//a[.='#{name}']" }
   element :menu_small, '.navbar-toggle'
   element :menu, '#main_menu'
-  element :first_link, :link, ->(text){ text }, match: :first
+  element :first_link, :link, ->(text) { text }, match: :first
 
   def tablet_screen?
     !menu_small_elements.first.nil?

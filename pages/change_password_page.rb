@@ -15,7 +15,7 @@ class ChangePasswordPage < DemoAppPage
   end
 
   def submit_form
-    log.info "Submit Change Password form"
+    log.info 'Submit Change Password form'
     submit_form_element.click
   end
 end

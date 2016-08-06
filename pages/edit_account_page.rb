@@ -12,7 +12,7 @@ class EditAccountPage < DemoAppPage
   element :current_password, :fillable_field, 'user_current_password'
 
   def cancel_my_account
-    log.info "Cancelling user account"
+    log.info 'Cancelling user account'
     accept_js_confirmation do
       cancel_account_button_element.click
     end
@@ -29,16 +29,15 @@ class EditAccountPage < DemoAppPage
   end
 
   def submit_form
-    log.info "Update user account"
+    log.info 'Update user account'
     update_account_btn_element.click
   end
 
   def form_data
-    {:user_name => name_element.value,
-     :email => email_element.value,
-     :password => password_element.value,
-     :password_confirmation => password_confirmation_element.value,
-     :current_password => current_password_element.value}
+    { user_name: name_element.value,
+      email: email_element.value,
+      password: password_element.value,
+      password_confirmation: password_confirmation_element.value,
+      current_password: current_password_element.value }
   end
-
 end

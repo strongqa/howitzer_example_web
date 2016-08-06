@@ -9,7 +9,7 @@ class SignUpPage < DemoAppPage
   element :password_confirmation_input, :fillable_field, 'user_password_confirmation'
   element :sign_up_btn, :button, 'Sign up'
 
-  def fill_form(user_name:nil, email:nil, password:nil, password_confirmation:nil)
+  def fill_form(user_name: nil, email: nil, password: nil, password_confirmation: nil)
     user_name_input_element.set(user_name) unless user_name.nil?
     email_input_element.set(email) unless email.nil?
     password_input_element.set(password) unless password.nil?

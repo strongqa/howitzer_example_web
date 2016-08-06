@@ -7,5 +7,4 @@ class ErrorsSection < Howitzer::Web::Section
   def error_message
     [title_element.text, details_element.text].compact.join(' ')
   end
-
 end

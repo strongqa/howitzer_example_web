@@ -20,12 +20,12 @@ class LoginPage < DemoAppPage
   end
 
   def submit_form
-    log.info "Submit Login Form"
+    log.info 'Submit Login Form'
     execute_script("$('[name=\"commit\"]').trigger('click')")
     sleep settings.timeout_tiny
   end
 
-  def login_as(email, password, remember_me=false)
+  def login_as(email, password, remember_me = false)
     log.info "Login with: Email=#{email}, Password=#{password}, Remember Me=#{remember_me}"
     fill_form(email: email, password: password, remember_me: remember_me)
     submit_form
@@ -33,7 +33,7 @@ class LoginPage < DemoAppPage
   end
 
   def navigate_to_forgot_password_page
-    log.info "Navigate to forgot password page"
+    log.info 'Navigate to forgot password page'
     forgot_password_link_element.click
   end
 end

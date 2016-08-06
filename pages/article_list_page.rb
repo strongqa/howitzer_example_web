@@ -7,10 +7,10 @@ class ArticleListPage < DemoAppPage
   element :article_button, :xpath, ->(title) { "//a[contains(.,'#{title}')]" }
   element :destroy_button, :xpath, ->(title) { "//strong[.='#{title}']/following-sibling::a[normalize-space(.)='Destroy'][1]" }
   element :edit_button, :xpath, ->(title) { "//strong[.='#{title}']/following-sibling::a[normalize-space(.)='Edit'][1]" }
-  element :article_link, :link, ->(text){ text }, match: :first
+  element :article_link, :link, ->(text) { text }, match: :first
 
   def add_new_article
-    log.info "Adding new article"
+    log.info 'Adding new article'
 
     new_article_button_element.click
     NewArticlePage.given

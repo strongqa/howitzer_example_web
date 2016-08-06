@@ -7,5 +7,4 @@ class FlashSection < Howitzer::Web::Section
   def flash_message
     flash_message_element.text
   end
-
 end

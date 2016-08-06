@@ -13,7 +13,7 @@ class ForgotPasswordPage < DemoAppPage
   end
 
   def submit_form
-    log.info "Submit Forgot Password form"
+    log.info 'Submit Forgot Password form'
     reset_password_button_element.click
   end
 end
