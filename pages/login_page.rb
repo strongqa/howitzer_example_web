@@ -22,7 +22,7 @@ class LoginPage < DemoAppPage
   def submit_form
     log.info 'Submit Login Form'
     execute_script("$('[name=\"commit\"]').trigger('click')")
-    sleep settings.page_load_idle_timeout
+    sleep Howitzer.page_load_idle_timeout
   end
 
   def login_as(email, password, remember_me = false)
