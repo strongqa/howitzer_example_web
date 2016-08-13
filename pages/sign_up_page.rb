@@ -22,7 +22,7 @@ class SignUpPage < DemoAppPage
   end
 
   def sign_up_as(user_name, email, password)
-    log.info "Sign up with: User name=#{user_name}, Email=#{email}, Password=#{password}"
+    Howitzer::Log.info "Sign up with: User name=#{user_name}, Email=#{email}, Password=#{password}"
     fill_form(user_name: user_name, email: email, password: password, password_confirmation: password)
     submit_form
     HomePage.given

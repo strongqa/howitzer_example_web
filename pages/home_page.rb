@@ -8,7 +8,7 @@ class HomePage < DemoAppPage
   element :panel_heading, :xpath, ->(title) { "//h3[text()=\"#{title}\"]/parent::*/following-sibling::*" }
 
   def view_article(article_title)
-    log.info "Open article page byb title: '#{article_title}'"
+    Howitzer::Log.info "Open article page byb title: '#{article_title}'"
     article_link_elemnt(article_title).click
     ArticlePage.given
   end

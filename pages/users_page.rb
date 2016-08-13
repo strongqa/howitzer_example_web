@@ -7,7 +7,7 @@ class UsersPage < DemoAppPage
   element :user_email, :link_or_button, ->(email) { email }
 
   def open_user(user_email)
-    log.info "Open user '#{user_email}' page"
+    Howitzer::Log.info "Open user '#{user_email}' page"
     user_email_element(user_email).click
   end
 

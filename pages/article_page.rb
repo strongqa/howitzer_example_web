@@ -16,12 +16,12 @@ class ArticlePage < DemoAppPage
   element :edit_article_button, :xpath, ".//a[contains(.,'Edit Article')]"
 
   def fill_comment_form(body: nil)
-    log.info "Fill in Add Comment form with body: #{body}"
+    Howitzer::Log.info "Fill in Add Comment form with body: #{body}"
     comment_field_element.set(body) unless body.nil?
   end
 
   def submit_form
-    log.info 'Submit Add Comment form'
+    Howitzer::Log.info 'Submit Add Comment form'
     add_comment_button_element.click
   end
 
@@ -33,12 +33,12 @@ class ArticlePage < DemoAppPage
   end
 
   def click_article_button(text)
-    log.info "Open '#{text}' article"
+    Howitzer::Log.info "Open '#{text}' article"
     article_button_element(text).click
   end
 
   def destroy_comment(comment_text, confirmation = true)
-    log.info "Destroy comment  '#{comment_text}' on article page with confirmation: '#{confirmation}'"
+    Howitzer::Log.info "Destroy comment  '#{comment_text}' on article page with confirmation: '#{confirmation}'"
     destroy = -> { destroy_comment_element(comment_text).click }
     if confirmation
       accept_js_confirmation { destroy.call }

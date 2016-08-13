@@ -12,7 +12,8 @@ class LoginPage < DemoAppPage
   element :forgot_password_link, :link, 'Forgot password?'
 
   def fill_form(email: nil, password: nil, remember_me: nil)
-    log.info "Fill in Login Form with data: email: #{email}, password: #{password}, remember_me: #{remember_me}"
+    Howitzer::Log.info 'Fill in Login Form with data:' \
+               "email: #{email}, password: #{password}, remember_me: #{remember_me}"
     email_input_element.set(email) unless email.nil?
     password_input_element.set(password) unless password.nil?
     remember_me_element.set(true) unless remember_me.nil?
@@ -20,20 +21,20 @@ class LoginPage < DemoAppPage
   end
 
   def submit_form
-    log.info 'Submit Login Form'
+    Howitzer::Log.info 'Submit Login Form'
     execute_script("$('[name=\"commit\"]').trigger('click')")
     sleep Howitzer.page_load_idle_timeout
   end
 
   def login_as(email, password, remember_me = false)
-    log.info "Login with: Email=#{email}, Password=#{password}, Remember Me=#{remember_me}"
+    Howitzer::Log.info "Login with: Email=#{email}, Password=#{password}, Remember Me=#{remember_me}"
     fill_form(email: email, password: password, remember_me: remember_me)
     submit_form
     HomePage.given
   end
 
   def navigate_to_forgot_password_page
-    log.info 'Navigate to forgot password page'
+    Howitzer::Log.info 'Navigate to forgot password page'
     forgot_password_link_element.click
   end
 end

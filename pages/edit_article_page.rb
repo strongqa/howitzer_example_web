@@ -7,14 +7,14 @@ class EditArticlePage < DemoAppPage
   element :create_article_button, :button, 'Update Article'
 
   def fill_form(title: nil, text: nil)
-    log.info "Fill in Update Article form with title: #{title} , and body #{text}"
+    Howitzer::Log.info "Fill in Update Article form with title: #{title} , and body #{text}"
     article_title_field_element.set(title) unless title.nil?
     article_text_field_element.set(text) unless text.nil?
     self
   end
 
   def submit_form
-    log.info 'Submit Update Article form'
+    Howitzer::Log.info 'Submit Update Article form'
     create_article_button_element.click
     self
   end

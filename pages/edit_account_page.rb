@@ -12,14 +12,14 @@ class EditAccountPage < DemoAppPage
   element :current_password, :fillable_field, 'user_current_password'
 
   def cancel_my_account
-    log.info 'Cancelling user account'
+    Howitzer::Log.info 'Cancelling user account'
     accept_js_confirmation do
       cancel_account_button_element.click
     end
   end
 
   def fill_form(user_name: '', email: '', password: '', password_confirmation: '', current_password: '')
-    log.info "Fill in Edit Account form with data:\n\tuser_name: #{user_name}\n" \
+    Howitzer::Log.info "Fill in Edit Account form with data:\n\tuser_name: #{user_name}\n" \
              "\temail: #{email}\n\tpassword: #{password}\n\tpassword_confirmation: #{password_confirmation}\n" \
              "\tcurrent_password: #{current_password}"
     name_element.set(user_name)
@@ -31,7 +31,7 @@ class EditAccountPage < DemoAppPage
   end
 
   def submit_form
-    log.info 'Update user account'
+    Howitzer::Log.info 'Update user account'
     update_account_btn_element.click
   end
 

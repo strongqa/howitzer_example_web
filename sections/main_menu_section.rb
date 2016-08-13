@@ -23,7 +23,7 @@ class MainMenuSection < Howitzer::Web::Section
   end
 
   def choose_menu(text)
-    log.info "Open '#{text}' menu"
+    Howitzer::Log.info "Open '#{text}' menu"
     if tablet_screen?
       menu_small_element.click
       first_link_element(text).click

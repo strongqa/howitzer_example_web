@@ -8,14 +8,14 @@ class ChangePasswordPage < DemoAppPage
   element :submit_form, :button, 'Change my password'
 
   def fill_form(new_password: nil, confirm_new_password: nil)
-    log.info "Fill in Change Password form with new password: '#{new_password}'"
+    Howitzer::Log.info "Fill in Change Password form with new password: '#{new_password}'"
     password_input_element.set(new_password) unless new_password.nil?
     confirm_password_input_element.set(confirm_new_password) unless confirm_new_password.nil?
     self
   end
 
   def submit_form
-    log.info 'Submit Change Password form'
+    Howitzer::Log.info 'Submit Change Password form'
     submit_form_element.click
   end
 end
