@@ -1,6 +1,6 @@
 require_relative 'demo_app_page'
 class ArticleListPage < DemoAppPage
-  url '/articles/'
+  url '/articles1/' #TODO for travis debug only
   validate :title, /\ADemo web application - Listing Articles\z/
 
   element :new_article_button, :xpath, "//a[@href='/articles/new']"
