@@ -1,6 +1,6 @@
 require_relative 'demo_app_page'
 class UsersPage < DemoAppPage
-  url '/users'
+  path '/users'
   validate :title, /\ADemo web application - Users\z/
 
   element :registered_user_date, :xpath, ->(email) { ".//li[contains(.,'#{email}')]" }

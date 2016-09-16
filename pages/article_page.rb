@@ -1,6 +1,6 @@
 require_relative 'demo_app_page'
 class ArticlePage < DemoAppPage
-  url '/articles{/id}'
+  path '/articles{/id}'
   validate :title, /\ADemo web application - Article\z/
   validate :url, %r{\/articles\/\d+\/?\z}
 

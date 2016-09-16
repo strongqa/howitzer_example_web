@@ -1,6 +1,6 @@
 require_relative 'demo_app_page'
 class HomePage < DemoAppPage
-  url '/'
+  path '/'
   validate :title, /\ADemo web application - Home\z/
   validate :url, %r{\A(?:.*?:\/\/)?[^\/]*\/?\z}
 

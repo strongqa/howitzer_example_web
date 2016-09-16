@@ -1,6 +1,6 @@
 require_relative 'demo_app_page'
 class NewArticlePage < DemoAppPage
-  url '/articles/new/'
+  path '/articles/new/'
   validate :title, /\ADemo web application - New Article\z/
 
   element :article_title_field, :fillable_field, 'article[title]'

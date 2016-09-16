@@ -1,6 +1,6 @@
 require_relative 'demo_app_page'
 class EditAccountPage < DemoAppPage
-  url '/users/edit'
+  path '/users/edit'
   validate :title, /Demo web application - Edit User\z/
 
   element :cancel_account_button, :button, 'Cancel my account'

@@ -1,6 +1,6 @@
 require_relative 'demo_app_page'
 class SignUpPage < DemoAppPage
-  url '/users/sign_up'
+  path '/users/sign_up'
   validate :title, /\ADemo web application - Sign Up\z/
 
   element :user_name_input, :fillable_field, 'user_name'
