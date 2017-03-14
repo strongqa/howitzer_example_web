@@ -1,4 +1,5 @@
 require_relative 'demo_app_page'
+require_relative 'howitzer_home_page'
 class HomePage < DemoAppPage
   path '/'
   validate :title, /\ADemo web application - Home\z/
@@ -6,6 +7,8 @@ class HomePage < DemoAppPage
 
   element :article_link, :xpath, ->(title) { ".//a[.='#{title}']" }
   element :panel_heading, :xpath, ->(title) { "//h3[text()=\"#{title}\"]/parent::*/following-sibling::*" }
+
+  iframe :howitzer_home, 'howitzer'
 
   def view_article(article_title)
     Howitzer::Log.info "Open article page byb title: '#{article_title}'"
