@@ -3,7 +3,7 @@ class ForgotPasswordPage < DemoAppPage
   path '/users/password/new'
   validate :url, %r{\/users\/password}
   validate :title, /Demo web application - Forgot your password\?/
-  
+
   element :email_input, :fillable_field, 'user_email'
   element :reset_password_button, :button, 'Reset Password'
 
