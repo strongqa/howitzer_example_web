@@ -7,6 +7,7 @@ class LoginPage < DemoAppPage
   element :email_input, :fillable_field, 'user_email'
   element :password_input, :fillable_field, 'user_password'
   element :remember_me, :checkbox, 'user_remember_me'
+  element :login_btn, '[name=commit]'
 
   element :sign_up_link, :link, 'new_user_sign_up'
   element :forgot_password_link, :link, 'Forgot password?'
@@ -22,8 +23,7 @@ class LoginPage < DemoAppPage
 
   def submit_form
     Howitzer::Log.info 'Submit Login Form'
-    execute_script("$('[name=\"commit\"]').trigger('click')")
-    sleep Howitzer.page_load_idle_timeout
+    login_btn_element.click
   end
 
   def login_as(email, password, remember_me = false)
