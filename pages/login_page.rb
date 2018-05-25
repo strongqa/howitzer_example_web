@@ -1,12 +1,14 @@
 require_relative 'demo_app_page'
 class LoginPage < DemoAppPage
   path '/users/sign_in'
-  validate :title, /\ADemo web application - Log In\z/
+  validate :title, /\ADemo web application - Login form\z/
+  # Demo web application - Login form
   validate :url, %r{\/sign_in\/?\z}
 
   element :email_input, :fillable_field, 'user_email'
   element :password_input, :fillable_field, 'user_password'
-  element :remember_me, :checkbox, 'user_remember_me'
+  # element :remember_me, :checkbox, 'user_remember_me'
+  element :remember_me, 'label[for="user_remember_me"]'
   element :login_btn, '[name=commit]'
 
   element :sign_up_link, :link, 'new_user_sign_up'

@@ -1,7 +1,7 @@
 require_relative 'demo_app_page'
 class ArticlePage < DemoAppPage
   path '/articles{/id}'
-  validate :title, /\ADemo web application - Article\z/
+  validate :title, /\ADemo web application - Article title .+\z/
   validate :url, %r{\/articles\/\d+\/?\z}
 
   element :comment_field, :fillable_field, 'comment_body'
@@ -12,7 +12,7 @@ class ArticlePage < DemoAppPage
           ->(comment) { ".//p[contains(.,'#{comment}')]/following-sibling::p/a[.='Destroy Comment']" }
   element :article_button, :xpath, ->(title) { "//a[contains(.,'#{title}')]" }
   element :comment_form, '#new_comment'
-  element :back_to_articles, :xpath, ".//a[contains(.,'Back to Articles')]"
+  element :back_to_articles, :xpath, '//*[@class="breadcrumb"]//a[contains(.,"Articles")]'
   element :edit_article_button, :xpath, ".//a[contains(.,'Edit Article')]"
 
   def fill_comment_form(body: nil)

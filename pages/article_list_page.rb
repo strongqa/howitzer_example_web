@@ -4,11 +4,11 @@ class ArticleListPage < DemoAppPage
   validate :title, /\ADemo web application - Listing Articles\z/
 
   element :new_article_button, :xpath, "//a[@href='/articles/new']"
-  element :article_button, :xpath, ->(title) { "//a[contains(.,'#{title}')]" }
+  element :article_button, :xpath, ->(title) { "(//a[contains(.,'#{title}')])[1]" }
   element :destroy_button, :xpath,
-          ->(title) { "//strong[.='#{title}']/following-sibling::a[normalize-space(.)='Destroy'][1]" }
+          ->(title) { %(//a[@class="article__title"][text()="#{title}"]/ancestor::section/following-sibling::div[@class="admin__wrapper"][1]/a[text()="Delete"]) }
   element :edit_button, :xpath,
-          ->(title) { "//strong[.='#{title}']/following-sibling::a[normalize-space(.)='Edit'][1]" }
+          ->(title) { %(//a[@class="article__title"][text()="#{title}"]/ancestor::section/following-sibling::div[@class="admin__wrapper"][1]/a[text()="Edit"]) }
   element :article_link, :link, ->(text) { text }, match: :first
 
   def add_new_article

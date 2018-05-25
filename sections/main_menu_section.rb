@@ -1,7 +1,9 @@
 class MainMenuSection < Howitzer::Web::Section
-  me '.navbar-fixed-top'
+  # me '.navbar-fixed-top'
+  me '.navigation div.container'
 
   element :menu_item, :xpath, ->(name) { ".//a[.='#{name}']" }
+  element :navigation_menu, '.navigation__menu'
   element :menu_small, '.navbar-toggle'
   element :menu, '#main_menu'
   element :first_link, :link, ->(text) { text }, match: :first
@@ -12,14 +14,12 @@ class MainMenuSection < Howitzer::Web::Section
 
   def authenticated?
     menu_small_element.click if tablet_screen?
-    menu_element
-    has_menu_item_element?('Logout')
+    /LOGOUT/ === navigation_menu_element.text
   end
 
   def not_authenticated?
     menu_small_element.click if tablet_screen?
-    menu_element
-    has_no_menu_item_element?('Logout')
+    /LOGIN/ === navigation_menu_element.text
   end
 
   def choose_menu(text)
