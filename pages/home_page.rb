@@ -16,13 +16,13 @@ class HomePage < DemoAppPage
   def iframe_wait
     Capybara.current_session.find('iframe#howitzer')
     sleep 1
-    within_frame('howitzer'){
+    within_frame('howitzer') do
       # binding.pry
       Capybara.current_session.find('a.hero__logo', visible: :all)
-      output = File.open( "outputfile.html","w" )
+      output = File.open( 'outputfile.html','w' )
       output << html
       output.close
-    }
+    end
   end
 
   def view_article(article_title)
