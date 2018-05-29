@@ -19,7 +19,7 @@ class HomePage < DemoAppPage
     within_frame('howitzer') do
       # binding.pry
       Capybara.current_session.find('a.hero__logo', visible: :all)
-      output = File.open( 'outputfile.html','w' )
+      output = File.open('outputfile.html', 'w')
       output << html
       output.close
     end

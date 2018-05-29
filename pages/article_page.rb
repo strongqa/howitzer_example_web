@@ -9,7 +9,7 @@ class ArticlePage < DemoAppPage
   element :commenter_name, :xpath, ".//p[contains(.,'Commenter:')]"
   element :comment_text, :xpath, ".//p[contains(.,'Comment:')]"
   element :destroy_comment, :xpath,
-          ->(comment) { ".//p[contains(.,'#{comment}')]/following-sibling::p/a[.='Destroy Comment']" }
+          ->(comment) { %(.//p[@class="comments__body"][text()="#{comment}"]/ancestor::div[@class="comments__item"]//a[@data-method="delete"]) }
   element :article_button, :xpath, ->(title) { "//a[contains(.,'#{title}')]" }
   element :comment_form, '#new_comment'
   element :back_to_articles, :xpath, '//*[@class="breadcrumb"]//a[contains(.,"Articles")]'
