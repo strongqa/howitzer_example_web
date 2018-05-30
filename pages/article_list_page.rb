@@ -5,10 +5,14 @@ class ArticleListPage < DemoAppPage
 
   element :new_article_button, :xpath, "//a[@href='/articles/new']"
   element :article_button, :xpath, ->(title) { "(//a[contains(.,'#{title}')])[1]" }
-  element :destroy_button, :xpath,
-          ->(title) { %(//a[@class="article__title"][text()="#{title}"]/ancestor::section/following-sibling::div[@class="admin__wrapper"][1]/a[text()="Delete"]) }
-  element :edit_button, :xpath,
-          ->(title) { %(//a[@class="article__title"][text()="#{title}"]/ancestor::section/following-sibling::div[@class="admin__wrapper"][1]/a[text()="Edit"]) }
+  element :destroy_button, :xpath, lambda { |title|
+    "//a[@class='article__title'][text()='#{title}']
+              /ancestor::section/following-sibling::div[@class='admin__wrapper'][1]/a[text()='Delete']"
+  }
+  element :edit_button, :xpath, lambda { |title|
+    "//a[@class='article__title'][text()='#{title}']"\
+              "/ancestor::section/following-sibling::div[@class='admin__wrapper'][1]/a[text()='Edit']"
+  }
   element :article_link, :link, ->(text) { text }, match: :first
 
   def add_new_article
