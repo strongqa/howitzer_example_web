@@ -16,7 +16,6 @@ class HomePage < DemoAppPage
     Capybara.current_session.find('iframe#howitzer')
     sleep 1
     within_frame('howitzer') do
-      # binding.pry
       Capybara.current_session.find('a.hero__logo', visible: :all)
       output = File.open('outputfile.html', 'w')
       output << html
@@ -26,16 +25,11 @@ class HomePage < DemoAppPage
 
   def view_article(article_title)
     Howitzer::Log.info "Open article page byb title: '#{article_title}'"
-    article_link_elemnt(article_title).click # TODO: typo element
+    article_link_element(article_title).click
     ArticlePage.given
   end
 
-  # def find_form_text(panel_title)
-  #   panel_heading_element(panel_title).text
-  # end
-
   def find_article_group_text(group_number)
-    # binding.pry
     article_group_element(group_number).text
   end
 end
