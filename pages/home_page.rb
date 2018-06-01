@@ -17,9 +17,6 @@ class HomePage < DemoAppPage
     sleep 1
     within_frame('howitzer') do
       Capybara.current_session.find('a.hero__logo', visible: :all)
-      output = File.open('outputfile.html', 'w')
-      output << html
-      output.close
     end
   end
 
