@@ -22,6 +22,10 @@ class SignUpPage < DemoAppPage
     sign_up_btn_element.click
   end
 
+  def navigate_to_login
+    log_in_link_element.click
+  end
+
   def sign_up_as(user_name, email, password)
     Howitzer::Log.info "Sign up with: User name=#{user_name}, Email=#{email}, Password=#{password}"
     fill_form(user_name: user_name, email: email, password: password, password_confirmation: password)
