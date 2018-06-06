@@ -3,8 +3,8 @@ class UsersPage < DemoAppPage
   path '/users'
   validate :title, /\ADemo web application - Users\z/
 
-  element :registered_user_date, :xpath,
-          ->(email) { %(//a[contains(.,"#{email}")]/ancestor::div[contains(.,"Created at: ")][1]) }
+  element :user_row_data, :xpath, ->(email) { "//*[contains(@class, 'users__item')][contains(., '#{email}')]" }
+  element :user_cell_data, :xpath, ".//div[contains(.,'Created at:')]"
   element :user_name, :link_or_button, ->(name) { name }
 
   def open_user(user_name)
@@ -13,6 +13,6 @@ class UsersPage < DemoAppPage
   end
 
   def user_registration_date(email)
-    registered_user_date_element(email).text
+    within_user_row_data_element(email) { user_cell_data_element.text }
   end
 end

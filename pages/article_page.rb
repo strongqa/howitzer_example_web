@@ -1,21 +1,23 @@
 require_relative 'demo_app_page'
 class ArticlePage < DemoAppPage
   path '/articles{/id}'
-  validate :title, /\ADemo web application - Article title .+\z/
   validate :url, %r{\/articles\/\d+\/?\z}
 
   element :comment_field, :fillable_field, 'comment_body'
   element :add_comment_button, :button, 'Create comment'
   element :commenter_name, :xpath, ".//p[contains(.,'Commenter:')]"
   element :comment_text, :xpath, ".//p[contains(.,'Comment:')]"
-  element :destroy_comment, :xpath, lambda { |comment|
-    ".//p[@class='comments__body'][text()='#{comment}']/"\
-                "ancestor::div[@class='comments__item']//a[@data-method='delete']"
+  element :comment_item, :xpath, lambda { |comment|
+    ".//*[@class='comments__item'][.//p[@class='comments__body'][text()='#{comment}']]"
   }
+  element :destroy_comment, 'a[data-method="delete"]'
   element :article_button, :xpath, ->(title) { "//a[contains(.,'#{title}')]" }
   element :comment_form, '#new_comment'
-  element :back_to_articles, :xpath, '//*[@class="breadcrumb"]//a[contains(.,"Articles")]'
-  element :edit_article_button, :xpath, ".//a[contains(.,'Edit Article')]"
+  # element :back_to_articles, :xpath, '//*[@class="breadcrumb"]//a[contains(.,"Articles")]'
+  element :breadcrumb, '*.breadcrumb'
+  element :breadcrumb_link, :xpath, ->(link_name) { ".//a[contains(.,'#{link_name}')]" }
+  element :edit_article_button, :link, 'Edit Article'
+  # element :edit_article_button, :xpath, ".//a[contains(.,'Edit Article')]"
 
   def fill_comment_form(body: nil)
     Howitzer::Log.info "Fill in Add Comment form with body: #{body}"
@@ -41,7 +43,7 @@ class ArticlePage < DemoAppPage
 
   def destroy_comment(comment_text, confirmation = true)
     Howitzer::Log.info "Destroy comment  '#{comment_text}' on article page with confirmation: '#{confirmation}'"
-    destroy = -> { destroy_comment_element(comment_text).click }
+    destroy = -> { within_comment_item_element(comment_text) { destroy_comment_element.click } }
     if confirmation
       accept_js_confirmation { destroy.call }
     else
@@ -50,6 +52,6 @@ class ArticlePage < DemoAppPage
   end
 
   def back_to_article_list
-    back_to_articles_element.click
+    within_breadcrumb_element { breadcrumb_link_element('Articles').click }
   end
 end

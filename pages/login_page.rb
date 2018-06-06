@@ -7,7 +7,6 @@ class LoginPage < DemoAppPage
 
   element :email_input, :fillable_field, 'user_email'
   element :password_input, :fillable_field, 'user_password'
-  # element :remember_me, :checkbox, 'user_remember_me'
   element :remember_me, 'label[for="user_remember_me"]'
   element :login_btn, '[name=commit]'
 
