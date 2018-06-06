@@ -1,5 +1,4 @@
 class ErrorsSection < Howitzer::Web::Section
-  # me :xpath, '//div[contains(@class,"alert")]'
   me '*.alert'
 
   element :title, 'strong'

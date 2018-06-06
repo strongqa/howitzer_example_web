@@ -13,11 +13,9 @@ class ArticlePage < DemoAppPage
   element :destroy_comment, 'a[data-method="delete"]'
   element :article_button, :xpath, ->(title) { "//a[contains(.,'#{title}')]" }
   element :comment_form, '#new_comment'
-  # element :back_to_articles, :xpath, '//*[@class="breadcrumb"]//a[contains(.,"Articles")]'
   element :breadcrumb, '*.breadcrumb'
   element :breadcrumb_link, :xpath, ->(link_name) { ".//a[contains(.,'#{link_name}')]" }
   element :edit_article_button, :link, 'Edit Article'
-  # element :edit_article_button, :xpath, ".//a[contains(.,'Edit Article')]"
 
   def fill_comment_form(body: nil)
     Howitzer::Log.info "Fill in Add Comment form with body: #{body}"

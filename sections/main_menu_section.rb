@@ -1,5 +1,4 @@
 class MainMenuSection < Howitzer::Web::Section
-  # me '.navbar-fixed-top'
   me '.navigation div.container'
 
   element :menu_item, :xpath, ->(name) { ".//a[.='#{name}']" }
