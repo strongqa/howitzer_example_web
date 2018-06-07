@@ -3,8 +3,8 @@ class ArticleListPage < DemoAppPage
   path '/articles/'
   validate :title, /\ADemo web application - Listing Articles\z/
 
-  element :new_article_button, :xpath, "//a[@href='/articles/new']"
-  element :article_item, :xpath, ->(title) { "//section[@class='article__item'][.//a[.='#{title}']]" }
+  element :new_article_button, :xpath, ".//a[@href='/articles/new']"
+  element :article_item, :xpath, ->(title) { ".//a[.='#{title}']/ancestor::section[@class='article__item']" }
   element :article_button, 'a.article__title'
   element :destroy_button, :xpath, ".//a[.='Delete']"
   element :edit_button, :xpath, ".//a[.='Edit']"

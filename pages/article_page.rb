@@ -7,11 +7,12 @@ class ArticlePage < DemoAppPage
   element :add_comment_button, :button, 'Create comment'
   element :commenter_name, :xpath, ".//p[contains(.,'Commenter:')]"
   element :comment_text, :xpath, ".//p[contains(.,'Comment:')]"
+
   element :comment_item, :xpath, lambda { |comment|
-    ".//*[@class='comments__item'][.//p[@class='comments__body'][text()='#{comment}']]"
+    " .//p[@class='comments__body'][text()='#{comment}']/ancestor::div[@class='comments__item']"
   }
   element :destroy_comment, 'a[data-method="delete"]'
-  element :article_button, :xpath, ->(title) { "//a[contains(.,'#{title}')]" }
+  element :article_button, :xpath, ->(title) { ".//a[contains(.,'#{title}')]" }
   element :comment_form, '#new_comment'
   element :breadcrumb, '*.breadcrumb'
   element :breadcrumb_link, :xpath, ->(link_name) { ".//a[contains(.,'#{link_name}')]" }
