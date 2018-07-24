@@ -11,15 +11,6 @@ class HomePage < DemoAppPage
   element :quick_start_btn, '.hero__btn'
   iframe :howitzer_home, 'howitzer'
 
-  # TODO: delete sleep
-  def iframe_wait
-    Capybara.current_session.find('iframe#howitzer')
-    sleep 1
-    within_frame('howitzer') do
-      Capybara.current_session.find('a.hero__logo', visible: :all)
-    end
-  end
-
   def view_article(article_title)
     Howitzer::Log.info "Open article page byb title: '#{article_title}'"
     article_link_element(article_title).click
