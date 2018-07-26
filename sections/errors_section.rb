@@ -1,8 +1,8 @@
 class ErrorsSection < Howitzer::Web::Section
-  me '#error_explanation'
+  me '*.alert'
 
-  element :title, 'h2'
-  element :details, 'ul'
+  element :title, 'strong'
+  element :details, 'li'
 
   def error_message
     [title_element.text, details_element.text].compact.join(' ')

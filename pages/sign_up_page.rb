@@ -8,6 +8,7 @@ class SignUpPage < DemoAppPage
   element :password_input, :fillable_field, 'user_password'
   element :password_confirmation_input, :fillable_field, 'user_password_confirmation'
   element :sign_up_btn, :button, 'Sign up'
+  element :log_in_link, :link, 'Sign in'
 
   def fill_form(user_name: nil, email: nil, password: nil, password_confirmation: nil)
     user_name_input_element.set(user_name) unless user_name.nil?
@@ -19,6 +20,10 @@ class SignUpPage < DemoAppPage
 
   def submit_form
     sign_up_btn_element.click
+  end
+
+  def navigate_to_login
+    log_in_link_element.click
   end
 
   def sign_up_as(user_name, email, password)

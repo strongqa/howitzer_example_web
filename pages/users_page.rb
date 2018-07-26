@@ -3,15 +3,16 @@ class UsersPage < DemoAppPage
   path '/users'
   validate :title, /\ADemo web application - Users\z/
 
-  element :registered_user_date, :xpath, ->(email) { ".//li[contains(.,'#{email}')]" }
-  element :user_email, :link_or_button, ->(email) { email }
+  element :user_row_data, :xpath, ->(email) { ".//*[contains(@class, 'users__item')][contains(., '#{email}')]" }
+  element :user_cell_data, :xpath, ".//div[contains(.,'Created at:')]"
+  element :user_name, :link_or_button, ->(name) { name }
 
-  def open_user(user_email)
-    Howitzer::Log.info "Open user '#{user_email}' page"
-    user_email_element(user_email).click
+  def open_user(user_name)
+    Howitzer::Log.info "Open user '#{user_name}' page"
+    user_name_element(user_name).click
   end
 
   def user_registration_date(email)
-    registered_user_date_element(email).text
+    within_user_row_data_element(email) { user_cell_data_element.text }
   end
 end

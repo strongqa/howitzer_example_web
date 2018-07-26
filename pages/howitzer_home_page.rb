@@ -1,8 +1,8 @@
 class HowitzerHomePage < Howitzer::Web::Page
-  site 'http://howitzer-framework.io'
+  site 'https://howitzer-framework.io'
   path '/'
   validate :title, /\AHowitzer Framework\z/
-  validate :url, %r{http://howitzer-framework\.io}
+  validate :url, %r{https://howitzer-framework\.io}
   validate :element_presence, :quick_start_btn
 
   element :quick_start_btn, 'a', text: 'QUICK START'
