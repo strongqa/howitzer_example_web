@@ -1,7 +1,7 @@
 require_relative 'demo_app_page'
 class ChangePasswordPage < DemoAppPage
   path '/users/password/edit?reset_password_token={token}'
-  validate :url, %r{\/users\/password(?:\z|\/edit)}
+  validate :url, %r{/users/password(?:\z|/edit)}
 
   element :password_input, :fillable_field, 'user_password'
   element :confirm_password_input, :fillable_field, 'user_password_confirmation'

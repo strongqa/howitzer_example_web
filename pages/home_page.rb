@@ -3,7 +3,7 @@ require_relative 'howitzer_home_page'
 class HomePage < DemoAppPage
   path '/'
   validate :title, /\ADemo web application - Home\z/
-  validate :url, %r{\A(?:.*?:\/\/)?[^\/]*\/?\z}
+  validate :url, %r{\A(?:.*?://)?[^/]*/?\z}
 
   element :article_link, :xpath, ->(title) { ".//a[.='#{title}']" }
   element :article_group, :xpath, ->(number) { "(//*[@class=\"article__group_title\"])[#{number}]" }

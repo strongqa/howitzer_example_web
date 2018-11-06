@@ -3,7 +3,7 @@ class LoginPage < DemoAppPage
   path '/users/sign_in'
   validate :title, /\ADemo web application - Login form\z/
   # Demo web application - Login form
-  validate :url, %r{\/sign_in\/?\z}
+  validate :url, %r{/sign_in/?\z}
 
   element :email_input, :fillable_field, 'user_email'
   element :password_input, :fillable_field, 'user_password'
