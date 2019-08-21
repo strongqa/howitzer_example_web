@@ -9,6 +9,10 @@ class ArticleListPage < DemoAppPage
   element :destroy_button, :xpath, ".//a[.='Delete']"
   element :edit_button, :xpath, ".//a[.='Edit']"
   element :article_link, :link, ->(text) { text }, match: :first
+  element :search_input, '.sidebar__input'
+  element :search_btn, '.fa-search'
+  element :recent_post, :xpath, ->(name) { "//div[@class='recent-posts__desc']//a[contains(text(),'#{name}')]" }
+  element :category_item, :xpath, ->(name) { "//div[@class='sidebar__item']//a[.='#{name}']" }
 
   def add_new_article
     Howitzer::Log.info 'Adding new article'
@@ -39,5 +43,18 @@ class ArticleListPage < DemoAppPage
     else
       within_article_item_element(text) { article_button_element.click }
     end
+  end
+
+  def search_article(name)
+    search_input_element.set(name)
+    search_btn_element.click
+  end
+
+  def open_recent_post(name)
+    recent_post_element(name).click
+  end
+
+  def open_category_item(name)
+    category_item_element(name).click
   end
 end
