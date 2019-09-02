@@ -14,11 +14,12 @@ class CategoriesListPage < DemoAppPage
   end
 
   def edit_category(name)
+    Howitzer::Log.info 'Editing category name'
     edit_btn_element(name).click
   end
 
   def delete_category(name)
+    Howitzer::Log.info 'Deleting category'
     delete_btn_element(name).click
-    Capybara.current_session.accept_alert
   end
 end
