@@ -8,7 +8,7 @@ class MainMenuSection < Howitzer::Web::Section
   element :first_link, :link, ->(text) { text }, match: :first
 
   def tablet_screen?
-    !menu_small_elements.first.nil?
+    !menu_small_elements(wait: false).first.nil?
   end
 
   def authenticated?
