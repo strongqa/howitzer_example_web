@@ -3,12 +3,18 @@ class DemoAppPage < Howitzer::Web::Page
   section :flash
   section :errors
 
+  element :alert_text, '.alert'
+
   def self.authenticated?
     instance.main_menu_section.authenticated?
   end
 
   def self.not_authenticated?
     instance.main_menu_section.not_authenticated?
+  end
+
+  def alert_text
+    alert_text_element.text
   end
 
   private

@@ -7,7 +7,7 @@ class NewCategoryPage < DemoAppPage
   element :create_category_btn, "input[value='Create Category']"
 
   def create_category(name)
-    Howitzer::Log.info 'Adding new category'
+    Howitzer::Log.info "Adding new category with name #{name}"
     name_input_element.set name
     create_category_btn_element.click
   end

@@ -9,17 +9,17 @@ class CategoriesListPage < DemoAppPage
   element :category_item, :xpath, ->(name) { "//a[.='#{name}']" }
 
   def add_new_category
-    Howitzer::Log.info 'Adding new category'
+    Howitzer::Log.info "Click 'New category' button"
     new_category_button_element.click
   end
 
   def edit_category(name)
-    Howitzer::Log.info 'Editing category name'
+    Howitzer::Log.info "Editing category name #{name}"
     edit_btn_element(name).click
   end
 
   def delete_category(name)
-    Howitzer::Log.info 'Deleting category'
+    Howitzer::Log.info "Deleting category #{name}"
     delete_btn_element(name).click
   end
 end

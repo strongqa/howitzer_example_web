@@ -9,7 +9,6 @@ class LoginPage < DemoAppPage
   element :password_input, :fillable_field, 'user_password'
   element :remember_me, 'label[for="user_remember_me"]'
   element :login_btn, '[name=commit]'
-
   element :sign_up_link, :link, 'new_user_sign_up'
   element :forgot_password_link, :link, 'Forgot password?'
 

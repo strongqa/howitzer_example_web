@@ -8,7 +8,7 @@ class EditCategoryPage < DemoAppPage
   element :update_category_btn, "input[value='Update Category']"
 
   def update_category(name)
-    Howitzer::Log.info 'Adding new category'
+    Howitzer::Log.info "Update the name of the category to '#{name}'"
     name_input_element.set name
     update_category_btn_element.click
   end

@@ -6,6 +6,7 @@ class EditArticlePage < DemoAppPage
   element :article_title_field, :fillable_field, 'article[title]'
   element :article_text_field, :fillable_field, 'article[text]'
   element :create_article_button, :button, 'Update Article'
+  element :alert_text, '#error_explanation'
 
   def fill_form(title: nil, text: nil)
     Howitzer::Log.info "Fill in Update Article form with title: #{title} , and body #{text}"
