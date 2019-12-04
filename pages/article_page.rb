@@ -1,7 +1,7 @@
 require_relative 'demo_app_page'
 class ArticlePage < DemoAppPage
   path '/articles{/id}'
-  validate :url, %r{\/articles\/\d+\/?\z}
+  validate :url, %r{/articles/\d+/?\z}
 
   element :comment_field, :fillable_field, 'comment_body'
   element :add_comment_button, :button, 'Create comment'
