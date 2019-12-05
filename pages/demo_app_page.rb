@@ -13,8 +13,8 @@ class DemoAppPage < Howitzer::Web::Page
     instance.main_menu_section.not_authenticated?
   end
 
-  def alert_text
-    alert_text_element.text
+  def sanitized_alert_text
+    alert_text_element.text.gsub(/×\s+/, '').gsub(/\s+/, ' ')
   end
 
   private
