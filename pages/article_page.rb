@@ -1,7 +1,7 @@
 require_relative 'demo_app_page'
 class ArticlePage < DemoAppPage
   path '/articles{/id}'
-  validate :url, %r{\/articles\/\d+\/?\z}
+  validate :url, %r{/articles/\d+/?\z}
 
   element :comment_field, :fillable_field, 'comment_body'
   element :add_comment_button, :button, 'Create comment'
@@ -40,7 +40,7 @@ class ArticlePage < DemoAppPage
     article_button_element(text).click
   end
 
-  def destroy_comment(comment_text, confirmation = true)
+  def destroy_comment(comment_text, confirmation: true)
     Howitzer::Log.info "Destroy comment  '#{comment_text}' on article page with confirmation: '#{confirmation}'"
     destroy = -> { within_comment_item_element(comment_text) { destroy_comment_element.click } }
     if confirmation

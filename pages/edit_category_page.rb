@@ -2,7 +2,7 @@ require_relative 'demo_app_page'
 class EditCategoryPage < DemoAppPage
   path '/categories{/id}/edit'
   validate :title, /\ADemo web application - Edit Category\z/
-  validate :url, %r{\/categories\/\d+\/edit\z}
+  validate :url, %r{/categories/\d+/edit\z}
 
   element :name_input, '#category_name'
   element :update_category_btn, "input[value='Update Category']"

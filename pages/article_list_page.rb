@@ -26,7 +26,7 @@ class ArticleListPage < DemoAppPage
     within_article_item_element(title) { edit_button_element.click }
   end
 
-  def destroy_article(title, confirmation = true)
+  def destroy_article(title, confirmation: true)
     Howitzer::Log.info "Destroy article: '#{title}' with confirmation: '#{confirmation}'"
     destroy = -> { within_article_item_element(title) { destroy_button_element.click } }
     if confirmation

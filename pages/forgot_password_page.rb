@@ -1,7 +1,7 @@
 require_relative 'demo_app_page'
 class ForgotPasswordPage < DemoAppPage
   path '/users/password/new'
-  validate :url, %r{\/users\/password}
+  validate :url, %r{/users/password}
   validate :title, /Demo web application - Forgot your password\?/
 
   element :email_input, :fillable_field, 'user_email'
