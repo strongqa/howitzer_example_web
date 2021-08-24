@@ -3,7 +3,7 @@ class LoginPage < DemoAppPage
   path '/users/sign_in'
   validate :title, /\ADemo web application - Login form\z/
   # Demo web application - Login form
-  validate :url, %r{\/sign_in\/?\z}
+  validate :url, %r{/sign_in/?\z}
 
   element :email_input, :fillable_field, 'user_email'
   element :password_input, :fillable_field, 'user_password'
@@ -14,7 +14,7 @@ class LoginPage < DemoAppPage
 
   def fill_form(email: nil, password: nil, remember_me: nil)
     Howitzer::Log.info 'Fill in Login Form with data:' \
-               "email: #{email}, password: #{password}, remember_me: #{remember_me}"
+                       "email: #{email}, password: #{password}, remember_me: #{remember_me}"
     email_input_element.set(email) unless email.nil?
     password_input_element.set(password) unless password.nil?
     remember_me_element.set(true) unless remember_me.nil?
@@ -30,7 +30,7 @@ class LoginPage < DemoAppPage
     sign_up_link_element.click
   end
 
-  def login_as(email, password, remember_me = false)
+  def login_as(email, password, remember_me: false)
     Howitzer::Log.info "Login with: Email=#{email}, Password=#{password}, Remember Me=#{remember_me}"
     fill_form(email: email, password: password, remember_me: remember_me)
     submit_form
