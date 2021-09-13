@@ -1,11 +1,11 @@
 class MainMenuSection < Howitzer::Web::Section
   me '.navigation div.container'
 
-  element :menu_item, :xpath, ->(name) { ".//a[.='#{name}']" }
+  element :menu_item, :xpath, ->(name:) { ".//a[.='#{name}']" }
   element :navigation_menu, '.navigation__menu'
   element :menu_small, '.navbar-toggle'
   element :menu, '#main_menu'
-  element :first_link, :link, ->(text) { text }, match: :first
+  element :first_link, :link, ->(text:) { text }, match: :first
 
   def tablet_screen?
     !menu_small_elements(wait: false).first.nil?
@@ -25,9 +25,9 @@ class MainMenuSection < Howitzer::Web::Section
     Howitzer::Log.info "Open '#{text}' menu"
     if tablet_screen?
       menu_small_element.click
-      first_link_element(text).click
+      first_link_element(lambda_args(text: text)).click
     else
-      menu_item_element(text).click
+      menu_item_element(lambda_args(name: text)).click
     end
   end
 end

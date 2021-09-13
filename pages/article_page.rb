@@ -8,14 +8,14 @@ class ArticlePage < DemoAppPage
   element :commenter_name, :xpath, ".//p[contains(.,'Commenter:')]"
   element :comment_text, :xpath, ".//p[contains(.,'Comment:')]"
 
-  element :comment_item, :xpath, lambda { |comment|
+  element :comment_item, :xpath, lambda { |comment:|
     " .//p[@class='comments__body'][text()='#{comment}']/ancestor::div[@class='comments__item']"
   }
   element :destroy_comment, 'a[data-method="delete"]'
-  element :article_button, :xpath, ->(title) { ".//a[contains(.,'#{title}')]" }
+  element :article_button, :xpath, ->(title:) { ".//a[contains(.,'#{title}')]" }
   element :comment_form, '#new_comment'
   element :breadcrumb, '*.breadcrumb'
-  element :breadcrumb_link, :xpath, ->(link_name) { ".//a[contains(.,'#{link_name}')]" }
+  element :breadcrumb_link, :xpath, ->(link_name:) { ".//a[contains(.,'#{link_name}')]" }
   element :edit_article_button, :link, 'Edit Article'
 
   def fill_comment_form(body: nil)
@@ -37,12 +37,12 @@ class ArticlePage < DemoAppPage
 
   def click_article_button(text)
     Howitzer::Log.info "Open '#{text}' article"
-    article_button_element(text).click
+    article_button_element(lambda_args(title: text)).click
   end
 
   def destroy_comment(comment_text, confirmation: true)
     Howitzer::Log.info "Destroy comment  '#{comment_text}' on article page with confirmation: '#{confirmation}'"
-    destroy = -> { within_comment_item_element(comment_text) { destroy_comment_element.click } }
+    destroy = -> { within_comment_item_element(lambda_args(comment: comment_text)) { destroy_comment_element.click } }
     if confirmation
       accept_js_confirmation { destroy.call }
     else
@@ -51,6 +51,6 @@ class ArticlePage < DemoAppPage
   end
 
   def back_to_article_list
-    within_breadcrumb_element { breadcrumb_link_element('Articles').click }
+    within_breadcrumb_element { breadcrumb_link_element(lambda_args(link_name: 'Articles')).click }
   end
 end
